@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Name Combiner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Couple Name Combiner</h1>
+        <form id="nameCombinerForm">
+            <input type="text" id="name1" placeholder="Enter First Name" required>
+            <input type="text" id="name2" placeholder="Enter Second Name" required>
+            <button type="submit">Combine Names</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('nameCombinerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            let name1 = document.getElementById('name1').value.trim();
+            let name2 = document.getElementById('name2').value.trim();
+            
+            if (name1 && name2) {
+                let combinedName = combineNames(name1, name2);
+                document.getElementById('result').innerText = `Your couple name is: ${combinedName}`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter both names!';
+            }
+        });
+
+        function combineNames(name1, name2) {
+            let part1 = name1.substring(0, Math.floor(name1.length / 2));
+            let part2 = name2.substring(Math.floor(name2.length / 2));
+            return part1 + part2;
+        }
+    </script>
+
+</body>
+</html>
