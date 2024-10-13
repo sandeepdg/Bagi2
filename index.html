@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metronome Tool</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="google-site-verification" content="xfelL24iCZzZKyPN80dz-MwzrDvhLF1leTH74o-H3-E" />
-  <meta name="google-adsense-account" content="ca-pub-6176670166426342">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Metronome App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="metronome-container">
-    <h1>Metronome Tool</h1>
+    <header>
+        <h1>Metronome App</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="metronome.html">Metronome</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- BPM Input -->
-    <div class="bpm-control">
-      <label for="bpm">Set BPM (Beats Per Minute):</label>
-      <input type="number" id="bpm" min="30" max="240" value="100">
-    </div>
+    <main>
+        <h2>Welcome to the Metronome App</h2>
+        <p>This is a tool to help musicians practice with precision. Use the metronome to keep time!</p>
+    </main>
 
-    <!-- Play/Stop Buttons -->
-    <div class="controls">
-      <button id="start-button">Start</button>
-      <button id="stop-button" disabled>Stop</button>
-    </div>
-
-    <!-- Beat Visual Indicator -->
-    <div id="beat-indicator" class="beat-indicator"></div>
-  </div>
-
-  <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2024 Metronome App</p>
+    </footer>
 </body>
 </html>
