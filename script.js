@@ -1,50 +1,25 @@
-// script.js
+let metronomeInterval;
+let colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF9933', '#33FFF5'];
 
-let intervalID;
-let isPlaying = false;
+document.getElementById('start').addEventListener('click', function() {
+    const bpm = document.getElementById('bpm').value;
+    const interval = 60000 / bpm; // milliseconds per beat
+    clearInterval(metronomeInterval);
+    let colorIndex = 0;
 
-// Function to start the metronome
-function startMetronome() {
-  const bpm = document.getElementById('bpm').value;
-  const interval = (60 / bpm) * 1000; // Convert BPM to milliseconds interval
+    metronomeInterval = setInterval(function() {
+        playClick();
+        colorIndex = (colorIndex + 1) % colors.length;
+        document.getElementById('circle').style.backgroundColor = colors[colorIndex];
+    }, interval);
+});
 
-  const beatIndicator = document.getElementById('beat-indicator');
-  let isBeat = false;
+document.getElementById('stop').addEventListener('click', function() {
+    clearInterval(metronomeInterval);
+    document.getElementById('circle').style.backgroundColor = '#ccc'; // reset to neutral
+});
 
-  // Start the interval for the beats
-  intervalID = setInterval(() => {
-    isBeat = !isBeat;
-    if (isBeat) {
-      beatIndicator.classList.add('active-beat'); // Change color for active beat
-      playClickSound(); // Play sound for beat (optional)
-    } else {
-      beatIndicator.classList.remove('active-beat');
-    }
-  }, interval);
-
-  // Disable start button and enable stop button
-  document.getElementById('start-button').disabled = true;
-  document.getElementById('stop-button').disabled = false;
-  isPlaying = true;
+function playClick() {
+    console.log('Click');
+    // Add sound functionality here if desired (for example, using an audio API)
 }
-
-// Function to stop the metronome
-function stopMetronome() {
-  clearInterval(intervalID);
-  document.getElementById('beat-indicator').classList.remove('active-beat');
-  
-  // Enable start button and disable stop button
-  document.getElementById('start-button').disabled = false;
-  document.getElementById('stop-button').disabled = true;
-  isPlaying = false;
-}
-
-// Optional: Function to play click sound for each beat
-function playClickSound() {
-  const click = new Audio('click-sound.mp3'); // Add your click sound file
-  click.play();
-}
-
-// Event listeners for buttons
-document.getElementById('start-button').addEventListener('click', startMetronome);
-document.getElementById('stop-button').addEventListener('click', stopMetronome);
