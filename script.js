@@ -1,5 +1,6 @@
 let metronomeInterval;
 let colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF9933', '#33FFF5'];
+Audio('Click.mp3');
 
 document.getElementById('start').addEventListener('click', function() {
     const bpm = document.getElementById('bpm').value;
